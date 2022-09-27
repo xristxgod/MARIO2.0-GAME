@@ -4,8 +4,8 @@ import pygame
 
 
 class GameApp:
-    MAX_LEVEL: int = 3
-    SCREEN: Optional[pygame.Surface]
+    MAX_LEVEL: int = 0
+    SCREEN: pygame.Surface
     INSTANCE: Optional['GameApp']
 
     def __new__(cls, *args, **kwargs):
