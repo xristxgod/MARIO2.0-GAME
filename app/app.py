@@ -3,39 +3,33 @@ from typing import Optional
 
 import pygame
 
-import menu
-import level
+from .menu import Menu, MenuData
+from .level import Level, LevelData
 
 
 class GameApp:
-    MAX_LEVEL: int = 0
-    SCREEN: pygame.Surface
-    INSTANCE: Optional['GameApp']
-
-    def __new__(cls, *args, **kwargs):
-        if cls.INSTANCE is None:
-            cls.SCREEN = kwargs.get("screen")
-            cls.instance = super(GameApp, cls).__new__(cls, *args, **kwargs)
-        return cls.INSTANCE
+    MAX_LEVEL: int = 3
 
     def __init__(self, surface: pygame.Surface):
-        self.menu = menu.Menu(menu.MenuData(
+        self.screen = surface
+
+        self.menu = Menu(MenuData(
             level=0,
             maxLevel=self.MAX_LEVEL,
-            surface=surface,
+            surface=self.screen,
             startLevel=self.create_level
         ))
-        self.level = level.Level(level.LevelData(
+        self.level = Level(LevelData(
             currentLevel=0,
-            surface=surface,
+            surface=self.screen,
             createMenu=self.create_menu
         ))
         self.status = "menu"
 
     def create_level(self, current_level: int) -> NoReturn:
-        self.level = level.Level(level.LevelData(
+        self.level = Level(LevelData(
             currentLevel=current_level,
-            surface=self.SCREEN,
+            surface=self.screen,
             createMenu=self.create_menu
         ))
         self.status = f"Level: {current_level}"
@@ -43,10 +37,10 @@ class GameApp:
     def create_menu(self, current_level: int, new_max_level: int) -> NoReturn:
         if new_max_level > self.MAX_LEVEL:
             self.MAX_LEVEL = new_max_level
-        self.menu = menu.Menu(menu.MenuData(
+        self.menu = Menu(MenuData(
             level=current_level,
             maxLevel=self.MAX_LEVEL,
-            surface=self.SCREEN,
+            surface=self.screen,
             startLevel=self.create_level
         ))
 

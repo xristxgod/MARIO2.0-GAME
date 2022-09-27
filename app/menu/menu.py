@@ -41,7 +41,7 @@ class Menu(BaseController):
 
     def setup_nodes(self) -> NoReturn:
         """Setup nodes"""
-        self.nodes = pygame.sprite.Sprite()
+        self.nodes = pygame.sprite.Group()
         for i, level in enumerate(levels):
             if i <= self.max_level:
                 node = Node(level.nodePosition, "available", self.speed)
@@ -57,8 +57,9 @@ class Menu(BaseController):
 
     # Draw
     def draw_paths(self) -> NoReturn:
-        points = [node.nodePosition for i, node in enumerate(levels) if i <= self.max_level]
-        pygame.draw.lines(self.display_surface, "red", False, points, 6)
+        if self.max_level > 0:
+            points = [node.nodePosition for i, node in enumerate(levels) if i <= self.max_level]
+            pygame.draw.lines(self.display_surface, "red", False, points, 6)
 
     # Controller & Logic
     def get_move_data(self, target: str) -> pygame.math.Vector2:
