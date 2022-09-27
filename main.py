@@ -4,14 +4,13 @@ def main():
 
     import pygame
 
-    from src.settings import screen as sr
-    from src.game import Game
+    import app
+    from app.settings import screen as sr
 
     pygame.init()
     screen = pygame.display.set_mode(sr.screen)
-    print(type(screen))
     clock = pygame.time.Clock()
-    game = Game(screen)
+    game = app.GameApp(screen)
 
     while True:
         for event in pygame.event.get():

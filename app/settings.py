@@ -1,6 +1,9 @@
 from typing import Tuple
 
 
+LEVELS_COUNT: Tuple[int, int] = (0, 5)
+
+
 class ScreenConfig:
     _SCREEN_WIDTH = 1280
     _SCREEN_HEIGHT = 720
