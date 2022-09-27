@@ -9,6 +9,7 @@ def main():
 
     pygame.init()
     screen = pygame.display.set_mode(sr.screen)
+    print(type(screen))
     clock = pygame.time.Clock()
     game = Game(screen)
 

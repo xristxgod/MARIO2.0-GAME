@@ -37,6 +37,7 @@ class OverWorld:
         self.display_surface = surface
         self.max_level = max_level
         self.current_level = start_level
+        self.create_level = create_level
 
         self.nodes = None
         self.icon = None
@@ -88,6 +89,8 @@ class OverWorld:
                 self.move_direction = self.get_move_data("previous")
                 self.current_level -= 1
                 self.moving = True
+            elif keys[pygame.K_SPACE]:
+                self.create_level(self.current_level)
 
     def get_move_data(self, target):
         start = pygame.math.Vector2(self.nodes.sprites()[self.current_level].rect.center)

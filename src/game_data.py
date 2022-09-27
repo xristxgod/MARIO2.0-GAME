@@ -1,5 +1,28 @@
-level_0 = {"node_pos": (110, 400), "content": "this is level 0", "unlock": 1}
-level_1 = {"node_pos": (300, 220), "content": "this is level 1", "unlock": 2}
+import os
+
+from config import LEVEL_0, GRAPHICS_OVER_WORLD_LEVEL_0
+
+
+level_0 = {
+    "terrain": os.path.join(LEVEL_0, "level_0_terrain.csv"),
+    "coins": os.path.join(LEVEL_0, "level_0_coins.csv"),
+    "fg_palms": os.path.join(LEVEL_0, "level_0_fg_palms.csv"),
+    "bg_palms": os.path.join(LEVEL_0, "level_0_bg_palms.csv"),
+    "crates": os.path.join(LEVEL_0, "level_0_crates.csv"),
+    "enemies": os.path.join(LEVEL_0, "level_0_enemies.csv"),
+    "constrains": os.path.join(LEVEL_0, "level_0_constraints.csv"),
+    "player": os.path.join(LEVEL_0, "level_0_player.csv"),
+    "grass": os.path.join(LEVEL_0, "level_0_grass.csv"),
+    "node_pos": (110, 400),
+    "node_graphic": GRAPHICS_OVER_WORLD_LEVEL_0,
+    "content": "this is level level_0",
+    "unlock": 1
+}
+level_1 = {
+    "node_pos": (300, 220),
+    "content": "this is level 1",
+    "unlock": 2
+}
 level_2 = {"node_pos": (480, 610), "content": "this is level 2", "unlock": 3}
 level_3 = {"node_pos": (610, 350), "content": "this is level 3", "unlock": 4}
 level_4 = {"node_pos": (880, 210), "content": "this is level 4", "unlock": 5}
