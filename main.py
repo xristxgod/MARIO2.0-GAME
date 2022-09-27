@@ -1,12 +1,16 @@
 
 def main():
     import sys
+
     import pygame
-    from src.settings import ScreenConfig
+
+    from src.settings import screen as sr
+    from src.game import Game
 
     pygame.init()
-    screen = pygame.display.set_mode(ScreenConfig().screen)
+    screen = pygame.display.set_mode(sr.screen)
     clock = pygame.time.Clock()
+    game = Game(screen)
 
     while True:
         for event in pygame.event.get():
@@ -14,6 +18,7 @@ def main():
                 pygame.quit()
                 sys.exit()
         screen.fill("black")
+        game.run()
 
         pygame.display.update()
         clock.tick(60)
