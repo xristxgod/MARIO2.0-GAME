@@ -19,7 +19,7 @@ class _BaseDir:
     DIR: str
 
     @_validate_dir
-    def get(self, path: str) -> str:
+    def __call__(self, path: str) -> str:
         if path.find("/") < 0:
             return os.path.join(self.DIR, path)
         absolute_path = self.DIR
