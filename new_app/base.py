@@ -8,9 +8,9 @@ class BaseDraw:
         raise NotImplementedError
 
 
-class Tile(pygame.sprite.Sprite):
+class BaseTile(pygame.sprite.Sprite):
     def __init__(self, size: int, x: int, y: int):
-        super(Tile, self).__init__()
+        super(BaseTile, self).__init__()
         self.image = pygame.Surface((size, size))
         self.rect = self.image.get_rect(topleft=(x, y))
 
@@ -20,5 +20,5 @@ class Tile(pygame.sprite.Sprite):
 
 __all__ = [
     "BaseDraw",
-    "Tile"
+    "BaseTile"
 ]

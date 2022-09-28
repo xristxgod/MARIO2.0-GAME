@@ -1,11 +1,11 @@
 import typing
 
-from ..base import Tile
+from ..base import BaseTile
 
 from ..supports import ImportSupport
 
 
-class AnimatedTile(Tile):
+class AnimatedTile(BaseTile):
     def __init__(self, size: int, x: int, y: int, path: str):
         super(AnimatedTile, self).__init__(size, x, y)
         self.frames = ImportSupport.import_folder(path)
