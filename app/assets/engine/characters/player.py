@@ -34,7 +34,7 @@ class _PlayerAsset(BaseDraw):
         return self._assets
 
     def draw(self) -> '_PlayerAsset':
-        for path in self.TEXTURE_PATH:
+        for path in self._assets.keys():
             self._assets[path] = ImportSupport.import_folder(os.path.join(self.TEXTURE_PATH, path))
         return self
 

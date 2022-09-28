@@ -11,7 +11,7 @@ class ExplosionParticle(pygame.sprite.Sprite):
         super(ExplosionParticle, self).__init__()
         self.fps = FPS()
         self.animation_speed = 0.5
-        self.frames = ImportSupport.import_folder(texture_dir("character/dust_particles/explosion"))
+        self.frames = ImportSupport.import_folder(texture_dir("enemy/explosion"))
 
         self.image = self.frames[self.fps.index]
         self.rect = self.image.get_rect(center=position)

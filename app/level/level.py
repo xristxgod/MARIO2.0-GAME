@@ -18,6 +18,7 @@ from app.assets.engine.characters.player import Player, PlayerParticleData
 
 def _create_till_group(layout, _type: str) -> pygame.sprite.Group:
     sprite_group = pygame.sprite.Group()
+
     for row_index, row in enumerate(ImportSupport.import_csv_layout(layout)):
         for col_index, val in enumerate(row):
             if val != '-1':
@@ -38,18 +39,20 @@ def _create_till_group(layout, _type: str) -> pygame.sprite.Group:
                         sprite = Coin(TILE_SIZE, x, y, texture_dir("coins/gold"), 5)
                     if val == '1':
                         sprite = Coin(TILE_SIZE, x, y, texture_dir("coins/silver"), 1)
-                if _type == 'fg palms':
+                if _type == 'fgPalms':
                     if val == '0':
                         sprite = Palm(TILE_SIZE, x, y, texture_dir("terrain/palm_small"), 38)
                     if val == '1':
                         sprite = Palm(TILE_SIZE, x, y, texture_dir("terrain/palm_large"), 64)
-                if _type == 'bg palms':
+                if _type == 'bgPalms':
                     sprite = Palm(TILE_SIZE, x, y, texture_dir("terrain/palm_bg"), 64)
                 if _type == 'enemies':
                     sprite = Enemy(TILE_SIZE, x, y)
-                if _type == 'constraint':
+                if _type == 'constrains':
                     sprite = BaseTile(TILE_SIZE, x, y)
+
                 sprite_group.add(sprite)
+
     return sprite_group
 
 
@@ -124,7 +127,7 @@ class _Player:
 class _Map:
     TILLS = [
         "terrain", "coins", "fgPalms", "bgPalms", "crates",
-        "enemies", "constrains", "player", "grass"
+        "enemies", "constrains", "grass"
     ]
 
     def __init__(self, level_data: BaseLevel):
@@ -171,10 +174,10 @@ class Level:
 
     def horizontal_movement_collision(self) -> NoReturn:
         player = self.player.player.sprite
-        player.position.collision_rect.x += player.position.direction.x * player.position.speed
+        player.position.collision_rect.x += player.position.direction.x * player.position.SPEED
         collidable_sprites = self.map.terrain.sprites() + self.map.crates.sprites() + self.map.fgPalms.sprites()
         for sprite in collidable_sprites:
-            if sprite.rect.colliderect(player.collision_rect):
+            if sprite.rect.colliderect(player.position.collision_rect):
                 if player.position.direction.x < 0:
                     player.position.collision_rect.left = sprite.rect.right
                     player.position.ON_LEFT = True
@@ -189,7 +192,7 @@ class Level:
         player.position.apply_gravity()
         collidable_sprites = self.map.terrain.sprites() + self.map.crates.sprites() + self.map.fgPalms.sprites()
         for sprite in collidable_sprites:
-            if sprite.rect.colliderect(player.collision_rect):
+            if sprite.rect.colliderect(player.position.collision_rect):
                 if player.position.direction.y > 0:
                     player.position.collision_rect.bottom = sprite.rect.top
                     player.position.direction.y = 0
@@ -259,11 +262,11 @@ class Level:
 
         # Enemy
         self.map.enemies.update(self.WORLD_SHIFT)
-        self.map.enemies.update(self.world_shift)
+        self.map.constrains.update(self.WORLD_SHIFT)
         self.map.enemy_collision_reverse()
         self.map.enemies.draw(self.display_surface)
-        self.map.enemies.update(self.WORLD_SHIFT)
-        self.map.enemies.draw(self.display_surface)
+        self.explosion_sprites.update(self.WORLD_SHIFT)
+        self.explosion_sprites.draw(self.display_surface)
 
         # Crate
         self.map.crates.update(self.WORLD_SHIFT)
@@ -296,7 +299,7 @@ class Level:
 
         if self.player.is_death():
             self.back_to_menu(self.current_level, 0)
-        if self.player.is_death():
+        if self.player.is_win():
             self.back_to_menu(self.current_level, self.new_level)
 
         self.check_coin_collisions()
