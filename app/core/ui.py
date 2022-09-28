@@ -6,15 +6,15 @@ from ..supports import texture_dir
 
 
 class UI:
-    HEALTH_BAR = pygame.image.load(texture_dir("ui/health_bar.png")).convert_alpha()
     HEALTH_BAR_TOP_LEFT = (54, 39)
     BAR_WIDTH = 152
     BAR_HEIGHT = 4
 
-    COIN = pygame.image.load(texture_dir("ui/coin.png")).convert_alpha()
-    FONT = pygame.font.Font(texture_dir("ui/ARCADEPI.ttf"), 30)
-
     def __init__(self, surface: pygame.Surface):
+        self.HEALTH_BAR = pygame.image.load(texture_dir("ui/health_bar.png")).convert_alpha()
+        self.COIN = pygame.image.load(texture_dir("ui/coin.png")).convert_alpha()
+        self.FONT = pygame.font.Font(texture_dir("ui/ARCADEPI.ttf"), 30)
+
         self.display_surface = surface
 
         self.coin_rect = self.COIN.get_rect(topleft=(50, 61))

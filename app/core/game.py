@@ -39,7 +39,9 @@ class GameApp:
         self.level = Level(LevelData(
             currentLevel=current_level,
             surface=self.screen,
-            createMenu=self.create_menu
+            createMenu=self.create_menu,
+            changeCoins=self.change_coins,
+            health=self.change_health
         ))
         self.status = Condition.level
         self.menu_bg_music.stop()

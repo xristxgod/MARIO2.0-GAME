@@ -59,12 +59,7 @@ class LevelData:
     surface: pygame.Surface
     createMenu: Callable
     changeCoins: Callable
-    health: int
-
-
-class _Sound:
-    COIN = pygame.mixer.Sound(sound_dir("effects/coin.wav"))
-    STOMP = pygame.mixer.Sound(sound_dir("effects/stomp.wav"))
+    health: Callable
 
 
 class _Player:
@@ -106,7 +101,7 @@ class _Player:
         if pygame.sprite.spritecollide(self.player.sprite, self.goal, False):
             return True
 
-    def setup(self, layout: List, health: int, surface: pygame.Surface) -> '_Player':
+    def setup(self, layout: List, health: Callable, surface: pygame.Surface) -> '_Player':
         for row_index, row in enumerate(layout):
             for col_index, value in enumerate(row):
                 x = col_index * TILE_SIZE
@@ -145,11 +140,13 @@ class _Map:
                 enemy.reverse()
 
 
-class Level(_Sound, BaseController):
+class Level:
     WORLD_SHIFT = 0
     CURRENT_X = None
 
     def __init__(self, level: LevelData):
+        self.COIN = pygame.mixer.Sound(sound_dir("effects/coin.wav"))
+        self.STOMP = pygame.mixer.Sound(sound_dir("effects/stomp.wav"))
         self.display_surface = level.surface
         self.current_level = level.currentLevel
 

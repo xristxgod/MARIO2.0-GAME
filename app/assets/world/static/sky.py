@@ -53,16 +53,11 @@ class _MenuCloud(BaseDraw):
 
 
 class Sky(BaseDraw):
-    TOP = _transform("decoration/sky/sky_top.png")
-    BOTTOM = _transform("decoration/sky/sky_bottom.png")
-    MIDDLE = _transform("decoration/sky/sky_middle.png")
-
-    __slots__ = (
-        "horizont", "condition",
-        "palms", "clouds"
-    )
 
     def __init__(self, horizont: int, condition: Condition = Condition.level):
+        self.TOP = _transform("decoration/sky/sky_top.png")
+        self.BOTTOM = _transform("decoration/sky/sky_bottom.png")
+        self.MIDDLE = _transform("decoration/sky/sky_middle.png")
         self.horizont = horizont
         self.condition = condition
 

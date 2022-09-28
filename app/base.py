@@ -13,7 +13,7 @@ class BaseController:
 
 
 class BaseDraw:
-    def draw(self, *args, **kwargs) -> typing.Union[typing.ClassVar, typing.NoReturn]:
+    def draw(self, *args, **kwargs) -> typing.NoReturn:
         raise NotImplementedError
 
 

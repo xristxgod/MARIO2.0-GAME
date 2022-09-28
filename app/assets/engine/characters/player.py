@@ -20,15 +20,10 @@ def _wave_value():
     return 255 if math.sin(pygame.time.get_ticks()) >= 0 else 0
 
 
-class _Sound:
-    JUMP = pygame.mixer.Sound(sound_dir("effects/jump.wav"))
-    HIT = pygame.mixer.Sound(sound_dir("effects/hit.wav"))
-
-
 class _PlayerAsset(BaseDraw):
-    TEXTURE_PATH: str = texture_dir("textures/character")
 
     def __init__(self):
+        self.TEXTURE_PATH: str = texture_dir("character")
         self._assets = {"idle": [], "run": [], "jump": [], "fall": []}
 
     def __getitem__(self, item: str) -> Any:
@@ -44,17 +39,17 @@ class _PlayerAsset(BaseDraw):
         return self
 
 
-class _PlayerAnimation(_Sound):
-    PARTICLES = ImportSupport.import_folder(texture_dir("character/dust_particles/run"))
+class _PlayerAnimation:
 
     def __init__(self, surface: pygame.Surface, particles: PlayerParticleData):
+        self.PARTICLES = ImportSupport.import_folder(texture_dir("character/dust_particles/run"))
         self.fps = FPS()
         self.animation_speed = 0.15
         self.display_surface = surface
         self.animations_particles = particles
 
 
-class _PlayerPosition(_Sound):
+class _PlayerPosition:
     SPEED = 8
     GRAVITY = 0.8
     JUMP_SPEED = -16
@@ -65,6 +60,7 @@ class _PlayerPosition(_Sound):
     ON_RIGHT = False
 
     def __init__(self, status: str, rect: pygame.Rect):
+        self.JUMP = pygame.mixer.Sound(sound_dir("effects/jump.wav"))
         self.status = status
         self.direction = pygame.math.Vector2(0, 0)
         self.collision_rect = pygame.Rect(rect.topleft, (50, rect.height))
@@ -101,17 +97,18 @@ class _PlayerPosition(_Sound):
             self.JUMP.play()
 
 
-class _PlayerStatus(_Sound):
+class _PlayerStatus:
     HURT_TIME = 0
     INVINCIBLE = False
     INVINCIBILITY_DURATION = 500
 
-    def __init__(self, health: int = 100):
+    def __init__(self, health: Callable):
+        self.HIT = pygame.mixer.Sound(sound_dir("effects/hit.wav"))
         self.health = health
 
     def damage(self) -> NoReturn:
         self.HIT.play()
-        self.health -= 10
+        self.health(-10)
         self.INVINCIBLE = True
         self.HURT_TIME = pygame.time.get_ticks()
 
@@ -130,7 +127,9 @@ class Player(pygame.sprite.Sprite):
         "sound"
     )
 
-    def __init__(self, position: Tuple[int, int], surface: pygame.Surface, health: int, particles: PlayerParticleData):
+    def __init__(
+            self, position: Tuple[int, int], surface: pygame.Surface, health: Callable, particles: PlayerParticleData
+    ):
         super(Player, self).__init__()
         self.fps = FPS()
         self.animation_speed = 0.15
