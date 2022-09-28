@@ -4,7 +4,7 @@ from math import sin
 
 import pygame
 
-from ..inc import ImportSupport, graphics_dir
+from ..inc import ImportSupport, graphics_dir, sounds_dir
 
 
 class Player(pygame.sprite.Sprite):
@@ -46,9 +46,9 @@ class Player(pygame.sprite.Sprite):
         self.invincibility_duration = 500
         self.hurt_time = 0
 
-        self.jump_sound = pygame.mixer.Sound('../audio/effects/jump.wav')
+        self.jump_sound = pygame.mixer.Sound(sounds_dir("effects/jump.wav"))
         self.jump_sound.set_volume(0.5)
-        self.hit_sound = pygame.mixer.Sound('../audio/effects/hit.wav')
+        self.hit_sound = pygame.mixer.Sound(sounds_dir("effects/hit.wav"))
 
     def import_character_assets(self):
         character_path = graphics_dir("graphics/character")
@@ -56,15 +56,14 @@ class Player(pygame.sprite.Sprite):
 
         for animation in self.animations.keys():
             full_path = character_path + animation
-            self.animations[animation] = import_folder(full_path)
+            self.animations[animation] = ImportSupport.import_folder(full_path)
 
     def import_dust_run_particles(self):
-        self.dust_run_particles = import_folder('../graphics/character/dust_particles/run')
+        self.dust_run_particles = ImportSupport.import_folder(graphics_dir("character/dust_particles/run"))
 
     def animate(self):
         animation = self.animations[self.status]
 
-        # loop over frame index
         self.frame_index += self.animation_speed
         if self.frame_index >= len(animation):
             self.frame_index = 0
