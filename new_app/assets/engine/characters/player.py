@@ -1,7 +1,7 @@
 import os
 import math
 from typing import NoReturn
-from typing import Any, Callable, Dict
+from typing import Any, Callable, Dict, Tuple
 from dataclasses import dataclass
 
 import pygame
@@ -21,8 +21,8 @@ def _wave_value():
 
 
 class _Sound:
-    JUMP_SOUND = pygame.mixer.Sound(sound_dir("effects/jump.wav"))
-    HIT_SOUND = pygame.mixer.Sound(sound_dir("effects/hit.wav"))
+    JUMP = pygame.mixer.Sound(sound_dir("effects/jump.wav"))
+    HIT = pygame.mixer.Sound(sound_dir("effects/hit.wav"))
 
 
 class _PlayerAsset(BaseDraw):
@@ -98,7 +98,7 @@ class _PlayerPosition(_Sound):
 
         if keys[pygame.K_SPACE] and self.ON_GROUND:
             self.direction.y = self.JUMP_SPEED
-            self.JUMP_SOUND.play()
+            self.JUMP.play()
 
 
 class _PlayerStatus(_Sound):
@@ -110,7 +110,7 @@ class _PlayerStatus(_Sound):
         self.health = health
 
     def damage(self) -> NoReturn:
-        self.HIT_SOUND.play()
+        self.HIT.play()
         self.health -= 10
         self.INVINCIBLE = True
         self.HURT_TIME = pygame.time.get_ticks()
@@ -130,7 +130,7 @@ class Player(pygame.sprite.Sprite):
         "sound"
     )
 
-    def __init__(self, position: int, surface: pygame.Surface, health: int, particles: PlayerParticleData):
+    def __init__(self, position: Tuple[int, int], surface: pygame.Surface, health: int, particles: PlayerParticleData):
         super(Player, self).__init__()
         self.fps = FPS()
         self.animation_speed = 0.15
@@ -190,5 +190,6 @@ class Player(pygame.sprite.Sprite):
 
 
 __all__ = [
-    "Player"
+    "Player",
+    "PlayerParticleData"
 ]

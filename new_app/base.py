@@ -3,6 +3,15 @@ import typing
 import pygame
 
 
+class BaseController:
+
+    def input(self) -> typing.NoReturn:
+        raise NotImplementedError
+
+    def run(self) -> typing.NoReturn:
+        raise NotImplementedError
+
+
 class BaseDraw:
     def draw(self, *args, **kwargs) -> typing.Union[typing.ClassVar, typing.NoReturn]:
         raise NotImplementedError
@@ -20,5 +29,6 @@ class BaseTile(pygame.sprite.Sprite):
 
 __all__ = [
     "BaseDraw",
-    "BaseTile"
+    "BaseTile",
+    "BaseController"
 ]

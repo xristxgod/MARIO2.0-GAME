@@ -7,7 +7,7 @@ from new_app.core import FPS
 
 
 class JumpParticle(pygame.sprite.Sprite):
-    def __init__(self, position: int):
+    def __init__(self, position: typing.Tuple[int, int]):
         super(JumpParticle, self).__init__()
         self.fps = FPS()
         self.animation_speed = 0.5
