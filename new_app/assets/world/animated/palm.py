@@ -1,4 +1,4 @@
-from new_app.tiles import AnimatedTile
+from new_app.assets.tiles import AnimatedTile
 
 
 class Palm(AnimatedTile):

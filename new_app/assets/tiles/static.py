@@ -1,7 +1,6 @@
 import pygame
 
-from ..base import BaseTile
-from ..supports import texture_dir
+from new_app.base import BaseTile
 
 
 class StaticTile(BaseTile):

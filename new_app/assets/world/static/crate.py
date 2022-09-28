@@ -1,4 +1,4 @@
-from new_app.tiles import StaticTile
+from new_app.assets.tiles import StaticTile
 
 import pygame
 

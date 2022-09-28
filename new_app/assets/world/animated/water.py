@@ -5,7 +5,7 @@ import pygame
 from new_app.settings import screen
 from new_app.supports import texture_dir
 from new_app.base import BaseDraw
-from new_app.tiles import AnimatedTile
+from new_app.assets.tiles import AnimatedTile
 
 
 class Water(BaseDraw):

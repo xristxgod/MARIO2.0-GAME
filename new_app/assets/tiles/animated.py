@@ -1,9 +1,9 @@
 import typing
 
-from ..base import BaseTile
+from new_app.base import BaseTile
 
-from ..core import FPS
-from ..supports import ImportSupport
+from new_app.core import FPS
+from new_app.supports import ImportSupport
 
 
 class AnimatedTile(BaseTile):

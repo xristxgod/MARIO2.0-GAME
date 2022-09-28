@@ -4,7 +4,7 @@ from typing import List
 
 import pygame
 
-from ..settings import TILE_SIZE
+from new_app.settings import TILE_SIZE
 
 
 class ImportSupport:

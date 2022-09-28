@@ -6,7 +6,7 @@ import pygame
 from new_app.base import BaseDraw
 from new_app.settings import screen
 from new_app.supports import ImportSupport, texture_dir
-from new_app.tiles import StaticTile
+from new_app.assets.tiles import StaticTile
 
 
 class Clouds(BaseDraw):
