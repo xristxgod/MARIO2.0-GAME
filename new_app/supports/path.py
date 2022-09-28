@@ -15,7 +15,6 @@ def _validate_dir(func):
 
 
 class _BaseDir:
-
     DIR: str
 
     @_validate_dir
@@ -28,23 +27,18 @@ class _BaseDir:
         return absolute_path
 
 
-class GraphicsDir(_BaseDir):
+class TextureDir(_BaseDir):
     DIR = os.path.join(config.FILES_DIR, "textures")
 
 
-class LevelsDir(_BaseDir):
+class LevelDir(_BaseDir):
     DIR = os.path.join(config.FILES_DIR, "levels")
 
 
-class SoundsDir(_BaseDir):
+class SoundDir(_BaseDir):
     DIR = os.path.join(config.FILES_DIR, "sounds")
 
 
-graphics_dir = GraphicsDir()
-levels_dir = LevelsDir()
-sounds_dir = SoundsDir()
-
-
 __all__ = [
-    "graphics_dir", "levels_dir", "sounds_dir"
+    "TextureDir", "LevelDir", "SoundDir"
 ]
