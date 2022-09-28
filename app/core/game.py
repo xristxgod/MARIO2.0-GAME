@@ -11,7 +11,7 @@ from app.level import Level, LevelData
 
 
 class GameApp:
-    MAX_LEVEL: int = 2
+    MAX_LEVEL: int = 0
     MAX_HEALTH: int = 100
 
     def __init__(self, surface: pygame.Surface):
