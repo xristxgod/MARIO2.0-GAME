@@ -7,7 +7,7 @@ import pygame
 from ..settings import TILE_SIZE
 
 
-class Importer:
+class ImportSupport:
     @staticmethod
     def import_folder(path: str) -> List:
         surface_list = []
@@ -44,5 +44,5 @@ class Importer:
 
 
 __all__ = [
-    "Importer"
+    "ImportSupport"
 ]
