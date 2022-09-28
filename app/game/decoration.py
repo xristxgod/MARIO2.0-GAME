@@ -3,9 +3,9 @@ from random import choice, randint
 
 import pygame
 
-from ..settings import VERTICAL_TILE_NUMBER, TILE_SIZE, screen
-from ..inc import ImportSupport, graphics_dir
-from .tiles import AnimatedTile, StaticTile
+from app.settings import VERTICAL_TILE_NUMBER, TILE_SIZE, screen
+from app.inc import ImportSupport, graphics_dir
+from app.game.tiles import AnimatedTile, StaticTile
 
 
 class Sky:

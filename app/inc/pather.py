@@ -36,10 +36,15 @@ class LevelsDir(_BaseDir):
     DIR = os.path.join(config.FILES_DIR, "levels")
 
 
+class SoundsDir(_BaseDir):
+    DIR = os.path.join(config.FILES_DIR, "audio")
+
+
 graphics_dir = GraphicsDir()
 levels_dir = LevelsDir()
+sounds_dir = SoundsDir()
 
 
 __all__ = [
-    "graphics_dir", "levels_dir"
+    "graphics_dir", "levels_dir", "sounds_dir"
 ]

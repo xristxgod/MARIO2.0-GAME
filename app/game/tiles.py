@@ -2,7 +2,7 @@ from typing import NoReturn
 
 import pygame
 
-from ..inc import ImportSupport, graphics_dir
+from app.inc import ImportSupport, graphics_dir
 
 
 class Tile(pygame.sprite.Sprite):

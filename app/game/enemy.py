@@ -2,8 +2,8 @@ from random import randint
 
 import pygame
 
-from ..inc import graphics_dir
-from .tiles import AnimatedTile
+from app.inc import graphics_dir
+from app.game.tiles import AnimatedTile
 
 
 class Enemy(AnimatedTile):

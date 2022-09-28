@@ -1,5 +1,5 @@
 from .level import LevelData, Level
-from .decoration import Sky
+from app.game.decoration import Sky
 
 __all__ = [
     "LevelData",

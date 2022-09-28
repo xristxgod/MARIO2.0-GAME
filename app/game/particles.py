@@ -1,6 +1,6 @@
 import pygame
 
-from ..inc import ImportSupport, graphics_dir
+from app.inc import ImportSupport, graphics_dir
 
 
 class ParticleEffect(pygame.sprite.Sprite):
