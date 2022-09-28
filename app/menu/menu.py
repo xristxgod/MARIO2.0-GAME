@@ -6,6 +6,7 @@ import pygame
 
 from ..base import BaseController
 from ..data import levels
+from ..level import Sky
 from .node import Node, Icon
 
 
@@ -27,7 +28,7 @@ class Menu(BaseController):
 
         self.nodes: Optional[pygame.sprite.Sprite] = None
         self.icon: Optional[pygame.sprite.GroupSingle] = None
-        self.sky = None
+        self.sky: Optional[Sky] = Sky(8, 'menu')
 
         self.moving = False
         self.move_direction = pygame.math.Vector2(0, 0)

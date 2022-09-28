@@ -28,5 +28,7 @@ screen = ScreenConfig()
 
 
 __all__ = [
-    "screen"
+    "VERTICAL_TILE_NUMBER", "TILE_SIZE",
+    "LEVELS_COUNT",
+    "screen",
 ]
