@@ -34,17 +34,17 @@ def _generate_level(count: Tuple[int, int] = LEVELS_COUNT) -> Tuple:
 
     for num in range(count[0], count[1] + 1):
         levels_lst.append(BaseLevel(
-            terrain=levels_dir.get(f"{num}/level_{num}_terrain.csv"),
-            coins=levels_dir.get(f"{num}/level_{num}_coins.csv"),
-            fgPalms=levels_dir.get(f"{num}/level_{num}_fg_palms.csv"),
-            bgPalms=levels_dir.get(f"{num}/level_{num}_bg_palms.csv"),
-            crates=levels_dir.get(f"{num}/level_{num}_crates.csv"),
-            enemies=levels_dir.get(f"{num}/level_{num}_enemies.csv"),
-            constrains=levels_dir.get(f"{num}/level_{num}_constraints.csv"),
-            player=levels_dir.get(f"{num}/level_{num}_player.csv"),
-            grass=levels_dir.get(f"{num}/level_{num}_grass.csv"),
+            terrain=levels_dir(f"{num}/level_{num}_terrain.csv"),
+            coins=levels_dir(f"{num}/level_{num}_coins.csv"),
+            fgPalms=levels_dir(f"{num}/level_{num}_fg_palms.csv"),
+            bgPalms=levels_dir(f"{num}/level_{num}_bg_palms.csv"),
+            crates=levels_dir(f"{num}/level_{num}_crates.csv"),
+            enemies=levels_dir(f"{num}/level_{num}_enemies.csv"),
+            constrains=levels_dir(f"{num}/level_{num}_constraints.csv"),
+            player=levels_dir(f"{num}/level_{num}_player.csv"),
+            grass=levels_dir(f"{num}/level_{num}_grass.csv"),
             nodePosition=level_positions[num],
-            nodeGraphic=graphics_dir.get(f"menu/{num}"),
+            nodeGraphic=graphics_dir(f"menu/{num}"),
             unlock=num if num + 1 > count[1] else num + 1
         ))
     return tuple(levels_lst)

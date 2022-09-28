@@ -12,7 +12,7 @@ class Sky:
     def __init__(self, horizon: int, style: str = 'level'):
         self.top = pygame.image.load(graphics_dir("decoration/sky/sky_top.png")).convert()
         self.bottom = pygame.image.load(graphics_dir("decoration/sky/sky_bottom.png")).convert()
-        self.middle = pygame.image.load(graphics_dir("decoration/sky/sky_middle.png'")).convert()
+        self.middle = pygame.image.load(graphics_dir("decoration/sky/sky_middle.png")).convert()
         self.horizon = horizon
 
         self.top = pygame.transform.scale(self.top, (screen.width, TILE_SIZE))

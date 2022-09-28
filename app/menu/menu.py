@@ -112,7 +112,7 @@ class Menu(BaseController):
     # Inputs
     def input(self) -> NoReturn:
         self.input_timer()
-        self.input()
+        self.input_key()
 
     # Update
     def update(self) -> NoReturn:
