@@ -107,10 +107,11 @@ class _PlayerStatus:
         self.health = health
 
     def damage(self) -> NoReturn:
-        self.HIT.play()
-        self.health(-10)
-        self.INVINCIBLE = True
-        self.HURT_TIME = pygame.time.get_ticks()
+        if not self.INVINCIBLE:
+            self.HIT.play()
+            self.health(-10)
+            self.INVINCIBLE = True
+            self.HURT_TIME = pygame.time.get_ticks()
 
     def invincibility_timer(self) -> NoReturn:
         if self.INVINCIBLE:
