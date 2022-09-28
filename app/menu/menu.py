@@ -4,10 +4,12 @@ from dataclasses import dataclass
 
 import pygame
 
-from ..base import BaseController
-from ..data import levels
-from ..level import Sky
-from .node import Node, Icon
+from app.base import BaseController
+from app.settings import Condition
+from app.data import levels
+from app.assets.world.static import Sky
+from .node import Node
+from .icon import Icon
 
 
 @dataclass()
@@ -63,8 +65,7 @@ class Menu(BaseController):
         self.icon.add(icon)
 
     def setup_sky(self) -> NoReturn:
-        # self.sky = Sky(8,'overworld')
-        pass
+        self.sky = Sky(8, Condition.menu)
 
     # Draw
     def draw_paths(self) -> NoReturn:
@@ -127,6 +128,7 @@ class Menu(BaseController):
         self.nodes.draw(self.display_surface)
         self.icon.draw(self.display_surface)
 
+    # Run
     def run(self) -> NoReturn:
         self.input()
         self.update()
@@ -134,6 +136,6 @@ class Menu(BaseController):
 
 
 __all__ = [
-    "MenuData",
-    "Menu"
+    "Menu",
+    "MenuData"
 ]

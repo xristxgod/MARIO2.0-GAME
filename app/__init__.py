@@ -1,6 +1,6 @@
-from .app import GameApp
+from .app import run_app
 
 
 __all__ = [
-    "GameApp"
+    "run_app"
 ]

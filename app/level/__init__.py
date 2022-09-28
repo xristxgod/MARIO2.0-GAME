@@ -1,8 +1,7 @@
-from .level import LevelData, Level
-from app.game.decoration import Sky
+from app.level.level import Level, LevelData
+
 
 __all__ = [
-    "LevelData",
     "Level",
-    "Sky"
+    "LevelData"
 ]

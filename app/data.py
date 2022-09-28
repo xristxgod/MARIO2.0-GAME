@@ -53,5 +53,6 @@ def _generate_level(count: Tuple[int, int] = LEVELS_COUNT) -> Tuple:
 levels: Tuple[BaseLevel] = _generate_level()
 
 __all__ = [
-    "levels"
+    "levels",
+    "BaseLevel"
 ]

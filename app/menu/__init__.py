@@ -1,7 +1,7 @@
-from .menu import Menu, MenuData
+from app.menu.menu import Menu, MenuData
 
 
 __all__ = [
-    "MenuData",
-    "Menu"
+    "Menu",
+    "MenuData"
 ]

@@ -1,10 +1,16 @@
 from typing import Tuple
+from enum import Enum
 
-
-VERTICAL_TILE_NUMBER = 11
-TILE_SIZE = 64
 
 LEVELS_COUNT: Tuple[int, int] = (0, 5)
+
+VERTICAL_TILE_NUMBER: int = 11
+TILE_SIZE: int = 64
+
+
+class Condition(Enum):
+    menu = "menu"
+    level = "level"
 
 
 class ScreenConfig:
@@ -30,5 +36,6 @@ screen = ScreenConfig()
 __all__ = [
     "VERTICAL_TILE_NUMBER", "TILE_SIZE",
     "LEVELS_COUNT",
+    "Condition",
     "screen",
 ]
