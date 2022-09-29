@@ -243,7 +243,13 @@ class Level:
                 else:
                     self.player.player.sprite.status.damage()
 
+    def input(self) -> NoReturn:
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_ESCAPE]:
+            self.back_to_menu(self.current_level, self.current_level)
+
     def run(self):
+        self.input()
         # Sky
         self.sky.draw(self.display_surface)
         self.clouds.draw(self.display_surface, self.WORLD_SHIFT)

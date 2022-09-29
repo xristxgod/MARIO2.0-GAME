@@ -42,6 +42,7 @@
 > ### `K_RIGHT` - Go to the right
 > ### `K_LEFT` - Go to the left
 > ### `K_SPACE` or `K_UP` - Jump
+> ### `K_ESCAPE` - Back to menu
 
 
 ## Screenshots from the game:
