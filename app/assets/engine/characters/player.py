@@ -92,7 +92,7 @@ class _PlayerPosition:
         else:
             self.direction.x = 0
 
-        if keys[pygame.K_SPACE] and self.ON_GROUND:
+        if (keys[pygame.K_SPACE] or keys[pygame.K_UP]) and self.ON_GROUND:
             self.direction.y = self.JUMP_SPEED
             self.JUMP.play()
 

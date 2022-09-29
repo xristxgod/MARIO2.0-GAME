@@ -1,7 +1,6 @@
-import app
-
 
 def main():
+    import app
     app.run_app()
 
 
