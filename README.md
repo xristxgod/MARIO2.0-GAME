@@ -45,3 +45,7 @@
 
 
 ## Screenshots from the game:
+![image](https://user-images.githubusercontent.com/84931791/192965975-a47c7282-c3aa-4f5f-bf81-1787fbab44cb.png)
+
+![image](https://user-images.githubusercontent.com/84931791/192966065-b0f9fa57-40fa-4e1d-9f4f-631aedeb6faa.png)
+
